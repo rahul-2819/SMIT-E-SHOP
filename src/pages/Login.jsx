@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function login() {
   return (
@@ -39,11 +40,11 @@ function login() {
                     <button className="btn btn-dark btn-lg btn-block" type="button">Login</button>
                   </div>
 
-                  <a className="small text-muted" href="#!">Forgot password?</a>
-                  <p className="mb-5 pb-lg-2" style={{color: "#393f81"}}>Don't have an account? <a href='/signup'
-                      style={{color: "#393f81"}}>Register here</a></p>
-                  <a href="#!" className="small text-muted">Terms of use.</a>
-                  <a href="#!" className="small text-muted">Privacy policy</a>
+                  <Link className="small text-muted" href="#!">Forgot password?</Link>
+                  <p className="mb-5 pb-lg-2" style={{color: "#393f81"}}>Don't have an account? <Link to='/signup'
+                      style={{color: "#393f81"}}>Register here</Link></p>
+                  <Link to="#!" className="small text-muted">Terms of use.</Link>
+                  <Link to="#!" className="small text-muted">Privacy policy</Link>
                 </form>
 
               </div>

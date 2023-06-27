@@ -1,10 +1,11 @@
 import React from 'react'
 import '../App.css';
+import { Link } from 'react-router-dom';
 
 function Signup() {
   return (
     <>
-    <section className="vh-100" style={{backgroundColor: "#a75265"}}>
+    <section className="vh-100" style={{backgroundColor: "#00204a"}}>
   <div className="container h-100"  >
     <div className="row d-flex justify-content-center align-items-center h-100" >
       <div className="col-lg-12 col-xl-11">
@@ -60,7 +61,7 @@ function Signup() {
                   <div className="form-check d-flex justify-content-center mb-5">
                     <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3c" />
                     <label className="form-check-label" htmlFor="form2Example3">
-                      I agree all statements in <a href="#!">Terms of service</a>
+                      I agree all statements in <Link to="#!">Terms of service</Link>
                     </label>
                   </div>
 

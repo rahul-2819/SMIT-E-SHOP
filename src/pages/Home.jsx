@@ -1,9 +1,32 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Card from "../components/Card";
+import Carousel from "../components/Carousel";
+// import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <div>Home</div>
-  )
+    <>
+      <div>
+        <div>
+          <Navbar />
+        </div>
+
+        <div><Carousel/></div>
+
+        <div className="m-3">
+          <Card />
+          <Card />
+          <Card />
+        </div>
+
+        <div>
+          <Footer />
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Home
+export default Home;
