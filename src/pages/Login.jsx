@@ -1,7 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-function login() {
+function Login() {
+  const [details, setdetails] = useState({email:"",password:""});
+  const onChange=(e)=>{
+    setdetails({...details,[e.target.name]:e.target.value})
+  }
+
+  const handleSubmit=async(e)=>{
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/api/loginuser",{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify({
+        email:details.email,
+        password:details.password,
+      })
+    });
+    const json =await response.json();
+    console.log(json);
+    if(!json.success) alert("Enter valid credentials"); 
+  }
+
+
   return (
     <>
     <section className="vh-100" style={{backgroundColor:"#00204a"}}>
@@ -27,17 +50,15 @@ function login() {
                   <h5 className="fw-normal mb-3 pb-3" style={{letterSpacing: "1px"}}>Sign into your account</h5>
 
                   <div className="form-outline mb-4">
-                    <input type="email" id="form2Example17" className="form-control form-control-lg" />
-                    <label className="form-label" for="form2Example17">Email address</label>
+                    <input type="email" id="form2Example17" className="form-control form-control-lg" name='email' placeholder='Email Address' value={details.email} onChange={onChange}/>
                   </div>
 
                   <div className="form-outline mb-4">
-                    <input type="password" id="form2Example27" className="form-control form-control-lg" />
-                    <label className="form-label" for="form2Example27">Password</label>
+                    <input type="password" id="form2Example27" className="form-control form-control-lg" name='password' placeholder='Password' value={details.password} onChange={onChange} />
                   </div>
 
                   <div className="pt-1 mb-4">
-                    <button className="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                    <button onClick={handleSubmit} className="btn btn-dark btn-lg btn-block" type="button">Login</button>
                   </div>
 
                   <Link className="small text-muted" href="#!">Forgot password?</Link>
@@ -59,4 +80,4 @@ function login() {
   )
 }
 
-export default login
+export default Login
