@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 function Login() {
   const [details, setdetails] = useState({email:"",password:""});
+  let navigate = useNavigate();
   const onChange=(e)=>{
     setdetails({...details,[e.target.name]:e.target.value})
   }
@@ -22,6 +23,7 @@ function Login() {
     const json =await response.json();
     console.log(json);
     if(!json.success) alert("Enter valid credentials"); 
+    if(json.success) navigate('/');
   }
 
 
