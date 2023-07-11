@@ -10,6 +10,7 @@ function Card(props) {
           <h5 className="card-title">{props.itemName}</h5>
           <p className="card-text">{props.descr}</p>
           <div className="container w-100">
+            <p>Quantity</p>
             <select className="m-2 h-100 w-30 bg-success rounded">
               {Array.from(Array(5), (e, i) => {
                 return (
