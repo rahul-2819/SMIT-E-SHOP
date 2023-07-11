@@ -5,6 +5,7 @@ import Card from "../components/Card";
 
 
 function Home() {
+  const [search, setsearch] = useState('')
   const [itemCat, setitemCat] = useState([]);
   const [smithItem, setsmithItem] = useState([]);
 
@@ -45,17 +46,16 @@ function Home() {
               style={{ maxHeight: "500px", objectFit: "contain !important" }}
             >
                <div className="carousel-caption" style={{ zIndex: "10" }}>
-                  <form class="d-flex">
+                  <div class="d-flex justify-content-center">
                     <input
                       class="form-control me-2"
                       type="search"
                       placeholder="Search"
                       aria-label="Search"
+                      value={search}
+                      onChange={(e)=>{setsearch(e.target.value)}}
                     />
-                    <button class="btn btn-outline-success text-white bg-success " type="submit">
-                      Search
-                    </button>
-                  </form>
+                  </div>
                 </div>
               <div className="carousel-item active">
                 <img
@@ -121,7 +121,8 @@ function Home() {
                     {smithItem !== [] ? (
                       smithItem
                         .filter(
-                          (item) => item.CategoryName === data.CategoryName
+                          (item) => (item.CategoryName === data.CategoryName)
+                          && (item.name.toLowerCase().includes(search.toLocaleLowerCase()))
                         )
                         .map((filterItems) => {
                           return (
