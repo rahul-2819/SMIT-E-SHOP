@@ -5,7 +5,7 @@ function Card(props) {
     <>
     <div>
       <div className="card mt-3" style={{ width: "18rem", maxHeight: "600px", objectFit:"contain" }}>
-        <img className="card-img-top" src={props.imgSrc} alt="Card image cap" />
+        <img className="card-img-top" src={props.imgSrc} alt="Card image cap" style={{height:"120px",objectFit:"fill"}} />
         <div className="card-body">
           <h5 className="card-title">{props.itemName}</h5>
           <p className="card-text">{props.descr}</p>

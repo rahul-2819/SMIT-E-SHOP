@@ -3,6 +3,10 @@ const router = express.Router()
 const User = require('../models/User')
 const {body, validationResult} = require('express-validator')
 
+const jwt  = require('jsonwebtoken');
+const brcypt = require('bcryptjs');
+const jwtSecret = "abcdefghijklmnopqrstuvwxyzabcdef"
+
 
 router.post("/createuser",[
 body('email').isEmail(),
@@ -13,10 +17,13 @@ body('password').isLength({min: 5})]
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()});
     }
+
+    const salt = await brcypt.genSalt(10);
+    let secPassword = await brcypt.hash(req.body.password,salt);
     try{
        await User.create({
             name:req.body.name,
-            password:req.body.password,
+            password:secPassword,
             confirmPassword:req.body.confirmPassword,
             email:req.body.email,
             number:req.body.number,
@@ -43,12 +50,17 @@ router.post("/loginuser",[
            if(!userData){
             return res.status(400).json({errors:"there is no account with this email address"})
            }
-
-           if(req.body.password !== userData.password){
+           const pswdCompare = await brcypt.compare(req.body.password,userData.password);
+           if(!pswdCompare){
             return res.status(400).json({errors:"Wrong password"})
            }
-    
-           return res.json({success:true});
+           const data ={
+                user:{
+                    id:userData.id
+                }
+           }
+           const authToken = jwt.sign(data, jwtSecret);
+           return res.json({success:true, authToken:authToken});
         }catch(err){
             console.log(err);
             res.json({success:false})

@@ -43,7 +43,7 @@ function Home() {
             <div
               className="carousel-inner"
               id='carousel'
-              style={{ maxHeight: "500px", objectFit: "contain !important" }}
+              style={{ maxHeight: "500px"}}
             >
                <div className="carousel-caption" style={{ zIndex: "10" }}>
                   <div class="d-flex justify-content-center">
@@ -62,7 +62,7 @@ function Home() {
                   src="https://www.mesinc.net/wp-content/uploads/2020/01/forging.jpg"
                   className="d-block w-100"
                   alt="..."
-                  style={{filter:"brightness(40%"}}
+                  style={{filter:"brightness(30%)"}}
                 />
               </div>
               <div className="carousel-item">
@@ -70,7 +70,7 @@ function Home() {
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSveYizsPzOvQ7PY4lUnLYTT4opUSrPRDg96FL-h7ryfSdZm9EsKTCYCKo-x8cQ4hgjpQ8&usqp=CAU"
                   className="d-block w-100"
                   alt="..."
-                  style={{filter:"brightness(40%"}}
+                  style={{filter:"brightness(30%)"}}
                 />
               </div>
               <div className="carousel-item">
@@ -78,7 +78,7 @@ function Home() {
                   src="https://thumbs.dreamstime.com/b/blacksmith-forging-molten-metal-anvil-smithy-78566730.jpg"
                   className="d-block w-100"
                   alt="..."
-                  style={{filter:"brightness(40%"}}
+                  style={{filter:"brightness(30%)"}}
                 />
               </div>
             </div>
@@ -133,7 +133,7 @@ function Home() {
                               <Card
                                 itemName={filterItems.name}
                                 imgSrc={filterItems.img}
-                                descr={filterItems.description}
+                                // descr={filterItems.description}
                               />
                             </div>
                           );
