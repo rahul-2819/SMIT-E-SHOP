@@ -23,8 +23,13 @@ function Login() {
     const json =await response.json();
     console.log(json);
     if(!json.success) alert("Enter valid credentials"); 
-    if(json.success) navigate('/');
+    if(json.success){
+      localStorage.setItem("authToken",json.authToken)
+  
+      navigate('/');
+      console.log(localStorage.getItem("authToken"))
   }
+}
 
 
   return (
