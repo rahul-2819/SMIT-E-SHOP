@@ -131,8 +131,9 @@ function Home() {
                               className="col-12 col-md-6 col-lg-3"
                             >
                               <Card
-                                itemName={filterItems.name}
-                                imgSrc={filterItems.img}
+                                Items={filterItems}
+                                // itemName={filterItems.name}
+                                // imgSrc={filterItems.img}
                                 // descr={filterItems.description}
                               />
                             </div>

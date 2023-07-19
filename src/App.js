@@ -9,9 +9,11 @@ import Login_Seller from "./pages/Login_Seller";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
 import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+import { CartProvider } from "./components/ContextReducer";
 
 function App() {
   return (
+    <CartProvider>
     <BrowserRouter>
     <div>
       <Routes>
@@ -23,6 +25,7 @@ function App() {
       </Routes>
       </div>
     </BrowserRouter>
+    </CartProvider>
   );
 }
 
